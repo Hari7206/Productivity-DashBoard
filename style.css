@@ -164,7 +164,10 @@ section.allElems {
     height: 100%;
     background-color: var(--tri2);
     border-radius: 10px;
-    overflow: hidden;
+    overflow: auto;
+}
+.addTask::-webkit-scrollbar{
+    display: none;
 }
 
 .todo-list-fullPage .todo-container .allTask {
@@ -187,26 +190,27 @@ overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    overflow: hidden;
+    /* overflow: auto; */
     /* gap: 40px; */
 
 }
 
-.todo-list-fullPage .todo-container .addTask form  input {
+.todo-list-fullPage .todo-container .addTask form  #text-input {
     padding: 20px 30px;
     font-size: 1rem;
     letter-spacing: 1px;
     width: 100%;
-    background-color: var(--sec);
+     background-color: var(--pri);
     border: none;
     color: white;
        border-radius: 10px;
     outline: none;
     margin-bottom: 20px;
+        color:var(--sec);
 }
 
 input::placeholder {
-    color: rgba(245, 245, 245, 0.795);
+    color: var(--sec);
 }
 
 .todo-list-fullPage .todo-container .addTask form textarea {
@@ -215,14 +219,15 @@ input::placeholder {
   height: 480px;
     letter-spacing: 1px;
     width: 100%;
-    background-color: var(--sec);
+    background-color: var(--pri);
     border: none;
     border-radius: 10px;
     margin-bottom: 20px;
+        color:var(--sec);
    
 }
 textarea::placeholder {
-        color: rgba(245, 245, 245, 0.795);
+        color:var(--sec);
 }
 .todo-list-fullPage .todo-container .addTask button {
     padding: 20px 30px;
@@ -242,14 +247,33 @@ scale: 0.97;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--sec);
+    background-color: var(--pri);
     padding: 15px 20px;
     border-radius: 10px;
     margin-bottom: 10px;
+   
 }
 .allTask h4 {
     letter-spacing: 1px;
     font-weight: 400;
+     color: var(--sec);
+     display: flex;
+     gap: 5px;
+     align-items: center;
+}
+.allTask h4  span {
+    width: fit-content;
+   color: var(--pri);
+    font-size: 8px;
+    background-color: red;
+    padding: 5px 6px;
+    border-radius: 50px;
+}
+.allTask h4  span.true {
+    opacity: 1;
+}
+.allTask h4  span.false {
+    opacity: 0;
 }
 .allTask button {
     color: var(--pri);
@@ -263,4 +287,20 @@ scale: 0.97;
 }
 .allTask button:active {
     scale: 0.95;
+}
+.checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 30px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+.checkbox input {
+    scale: 1.3;
+}
+.checkbox label {
+font-size: 20px;
 }
