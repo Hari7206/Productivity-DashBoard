@@ -24,45 +24,40 @@ function openfetures() {
 }
 openfetures()
 
-let currentTask = [
-    {
-        task: 'kurkure khao',
-        details: 'abhi',
-        imp: true
-    },
-    {
-        task: 'kurkure khao',
-        details: 'abhi',
-        imp: true
-    },
-    {
-        task: 'kurkure khao',
-        details: 'abhi',
-        imp: true
-    },
-]
+function todo(){
+    let currentTask = []
+// localStorage.clear();
+if(localStorage.getItem('currentTask')){
+   
 
+} else {
+    console.log('Task list is Empty');
+    
+}
 let form = document.querySelector('.addTask form')
 let taskInput = document.querySelector('form #text-input')
 let taskDetails = document.querySelector('form  textarea')
 let taskCheckbox = document.querySelector('form #check')
 
-// let heading = document.querySelector('.task h4')
-
-
-
-
 
 function renderTask() {
+        localStorage.setItem('currentTask' , JSON.stringify(currentTask))
     let allTask = document.querySelector('.allTask')
-    let sum = ''
-    currentTask.forEach((elem) => {
+    let sum = '' 
+    currentTask.forEach((elem , idx) => {
         sum += `<div class="task">
                     <h4>${elem.task} <span class=${elem.imp}>imp</span> </h4>
-                    <button>Mark as Completed</button>
+                    <button id=${idx}>Mark as Completed</button>
                 </div>`
     })
     allTask.innerHTML = sum;
+     currentTask = JSON.parse(localStorage.getItem('currentTask'))
+document.querySelectorAll('.task button').forEach((btn) => {
+        btn.addEventListener('click' , function(){
+            currentTask.splice(btn.id , 1)
+            renderTask()
+        })
+})
 }
 renderTask()
 
@@ -74,6 +69,14 @@ form.addEventListener('submit', function (e) {
         details: taskDetails.value,
         imp: taskCheckbox.checked
     })
+
+    taskInput.value = '';
+    taskDetails.value = '';
+    taskCheckbox.checked = false
     renderTask()
         
 })
+
+}
+
+todo()
