@@ -22,7 +22,7 @@
 }
 
 @font-face {
-    font-family: aeonikRegular;
+    font-family: aeonikRegularItalic;
     src: url(./AeonikTRIAL-BoldItalic.otf);
 }
 
@@ -354,13 +354,14 @@ textarea::placeholder {
     left: 2%;
     font-size: 1rem;
     letter-spacing: 1px;
+    color: var(--tri1);
 }
 
 .daily-planner-fullPage .day-planner .day-planner-time input {
 
 
     padding: 20px 40px;
-        padding-top: 34px;
+    padding-top: 34px;
     background-color: var(--sec);
     width: 100%;
     font-size: 1.5rem;
@@ -374,4 +375,97 @@ textarea::placeholder {
 .day-planner-time input::placeholder {
     color: rgba(255, 255, 255, 0.445);
     letter-spacing: 1px;
+}
+
+.motivational-planner-fullPage {
+    position: relative;
+    display: block;
+
+}
+
+.motivational-planner-fullPage .motivational-container {
+    position: absolute;
+    height: 500px;
+    width: 900px;
+    top: 50%;
+    left: 50%;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+}
+
+.motivational-planner-fullPage .motivational-container::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--tri1);
+    border-radius: 50px;
+    scale: 1.15;
+    filter: blur(150px);
+    z-index: 8;
+}
+
+.motivational-planner-fullPage .motivational-container .motvational-wrapper {
+    z-index: 10;
+    position: absolute;
+    background: var(--tri1);
+    width: 100%;
+
+    border-radius: 40px;
+    padding: 12px
+}
+
+.motivation-1 h1 {
+    font-family: aeonikRegularItalic;
+    font-size: 30px;
+    background-color: var(--tri2);
+    padding: 20px;
+    font-weight: 500;
+    border-radius: 50px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.motivation-2 {
+
+    padding: 20px;
+}
+
+.motivation-2 h1 {
+    /* font-family: aeonikRegularItalic; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    color: var(--sec);
+}
+
+.motivation-3 {
+    margin-left: auto;
+    /* background-color: var(--tri2); */
+    padding: 2%;
+    border-radius: 50px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.motivation-3 h1 {
+    font-family: aeonikRegularItalic;
+    font-size: 30px;
+color: var(--tri2);
+    font-weight: 500;
+    border-radius: 50px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    /* text-align: right; */
+}
+
+.motvational-wrapper i {
+    position: absolute;
+    color: var(--tri2);
+    opacity: 0.4;
+    font-size: 8rem;
+    right: 1%;
+    top: 61%;
 }
