@@ -322,9 +322,7 @@ textarea::placeholder {
 }
 
 
-.daily-planner-fullPage {
-    display: block;
-}
+
 
 .daily-planner-fullPage .day-planner {
     background: var(--tri2);
@@ -353,14 +351,16 @@ textarea::placeholder {
 .day-planner .day-planner-time p {
     position: absolute;
     top: 12%;
-    left: 1%;
+    left: 2%;
     font-size: 1rem;
     letter-spacing: 1px;
 }
 
 .daily-planner-fullPage .day-planner .day-planner-time input {
-    padding-top: 34px;
+
+
     padding: 20px 40px;
+        padding-top: 34px;
     background-color: var(--sec);
     width: 100%;
     font-size: 1.5rem;

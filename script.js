@@ -80,3 +80,47 @@ form.addEventListener('submit', function (e) {
 }
 
 todo()
+
+
+function dailyPlanner() {
+    let dayPlanner = document.querySelector('.day-planner')
+
+
+let dayPlanData =  JSON.parse(localStorage.getItem('dayPlanData')) || {}
+
+
+let hours = Array.from({length:18} , (elem , idx) => {
+        return `${6+idx}:00 - ${7+idx}:00`
+})
+
+
+let sum = ''
+hours.forEach(function(elem , idx){
+
+        let savedData = dayPlanData[idx] || ''
+        
+sum += `   <div class="day-planner-time">
+            <p>
+               ${elem}
+            </p>
+            <input type="text" placeholder="..." id=${idx}  value=${savedData} >
+        </div>`
+})
+
+
+dayPlanner.innerHTML = sum
+
+
+let dayPlannerInput = document.querySelectorAll('.day-planner input')
+dayPlannerInput.forEach((elem) => {
+    elem.addEventListener('input' , () => {
+dayPlanData[elem.id] = elem.value
+localStorage.setItem('dayPlanData' , JSON.stringify(dayPlanData))
+    })
+})
+}
+dailyPlanner()
+
+
+
+
