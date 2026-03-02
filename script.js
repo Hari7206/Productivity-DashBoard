@@ -123,29 +123,122 @@ dailyPlanner()
 
 
 
-function motivationalQuote(){
+function motivationalQuote() {
     let motivationOfDay = document.querySelector('.motivation-2 h1')
-let motivationalAuthor = document.querySelector('.motivation-3 h1')
-async function fetchQuote() {
+    let motivationalAuthor = document.querySelector('.motivation-3 h1')
+    async function fetchQuote() {
 
-    try {
-       const response = await fetch(
-  "https://api.allorigins.win/raw?url=https://zenquotes.io/api/random"
-);
-        const data = await response.json();
+        try {
+            const response = await fetch(
+                "https://api.allorigins.win/raw?url=https://zenquotes.io/api/random"
+            );
+            const data = await response.json();
 
-        console.log(data);
+            console.log(data);
 
-        const quote = data[0].q;
-        const author = data[0].a;
+            const quote = data[0].q;
+            const author = data[0].a;
 
-        motivationOfDay.innerHTML = quote
-        motivationalAuthor.innerHTML = `${author}  ~ `
+            motivationOfDay.innerHTML = quote
+            motivationalAuthor.innerHTML = `${author}  ~ `
 
-    } catch (error) {
-        console.log("Error:", error);
+        } catch (error) {
+            console.log("Error:", error);
+        }
     }
-}
-fetchQuote()
+    fetchQuote()
 }
 motivationalQuote()
+
+
+
+function pomodoroTimer() {
+    
+let startBtn = document.querySelector('.start-timer')
+let pauseBtn = document.querySelector('.pause-timer')
+let resetBtn = document.querySelector('.reset-timer')
+
+let totalSeconds = 25 * 60
+let timerIntervel = null
+let timer = document.querySelector('.pomo-timer h1')
+let isWorkSession = true;
+let session = document.querySelector('.session')
+function updateTimer() {
+    let minutes = Math.floor(totalSeconds / 60)
+    let seconds = totalSeconds % 60;
+
+    timer.innerHTML = `${String(minutes).padStart('2', '0')}:${String(seconds).padStart('2', '0')}`
+}
+
+
+updateTimer()
+
+function startTimer() {
+
+
+    clearInterval(timerIntervel)
+
+    if (isWorkSession) {
+
+        session.innerHTML = 'Work Session'
+        session.style.backgroundColor = 'var(--green)'
+        timerIntervel = setInterval(() => {
+            if (totalSeconds > 0) {
+                totalSeconds--;
+                updateTimer()
+            }
+            else {
+                isWorkSession = false
+                clearInterval(timerIntervel)
+                timer.innerHTML = '05:00'
+                        session.innerHTML = 'Break'
+        session.style.backgroundColor = 'var(--blue)'
+                totalSeconds = 5 * 60
+            }
+        }, 1000);
+    }
+    else {
+
+
+        timerIntervel = setInterval(() => {
+            if (totalSeconds > 0) {
+                totalSeconds--;
+                updateTimer()
+            }
+            else {
+                isWorkSession = true
+                clearInterval(timerIntervel)
+                timer.innerHTML = '25:00'
+                session.innerHTML = 'Work Session'
+                session.style.backgroundColor = 'var(--green)'
+                        totalSeconds = 25 * 60
+            }
+        }, 1000);
+    }
+}
+
+function stopTimer() {
+    clearInterval(timerIntervel)
+
+}
+function resetTimer() {
+    clearInterval(timerIntervel)
+
+    totalSeconds = 25 * 60
+    updateTimer()
+}
+
+startBtn.addEventListener('click', function () {
+    startTimer()
+})
+pauseBtn.addEventListener('click', function () {
+    stopTimer()
+})
+resetBtn.addEventListener('click', function () {
+      session.innerHTML = 'Start Session'
+                session.style.backgroundColor = 'rgb(255, 0, 0)'
+    resetTimer()
+})
+}
+
+ pomodoroTimer()
