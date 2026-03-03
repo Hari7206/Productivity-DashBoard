@@ -1,4 +1,10 @@
 :root {
+
+/* --pri  → very light  
+--tri1 → bright  
+--sec  → dark  
+--tri2 → darker */
+
     --pri: #F8F4E1;
     --sec: #7D5A50;
     --tri1: #FEBA17;
@@ -36,42 +42,89 @@
     color: var(--pri);
 }
 
-html,
 body {
-    width: 100%;
     height: 100%;
-}
-
-#main {
-    height: 100%;
-    width: 100%;
+    overflow: auto;
     background-color: var(--sec);
 }
 
-.nav {
+#main {
+    height: 100vh;
     width: 100%;
-    height: 60px;
-    background-color: var(--tri2);
+    background-color: var(--sec);
+    /* padding: 40px; */
+
+
 }
 
-section.allElems {
-    height: 100%;
+
+.allElems {
+    display: flex;
+    position: absolute;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 10px;
+    /* position: relative; */
+}
+
+.allElems header {
+    margin-top: 60px;
+    min-height: 430px;
+    max-height: 1000px;
+    background-image: url(https://i.pinimg.com/originals/f8/42/6b/f8426bf4f6892dfed16b2e0f583d5670.gif);
+    background-size: cover;
+    background-position: center;
     width: 100%;
+    background-color: var(--tri2);
+    /* margin-bottom: 30px; */
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 40px;
-    padding-top: 80px;
+
+}
+
+header .header1 h1 {
+    font-size: 70px;
+    margin-bottom: 40px;
+}
+
+header .header1 h4 {
+    font-size: 40px;
+}
+
+header .header1 h2 {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+
+header .header2 h2 {
+    font-size: 40px;
+}
+
+header .header2 h4 {
+    font-size: 30px;
+}
+
+header .header2 h3 {
+    font-size: 25px;
+}
+
+section.allElems .allFeatures {
+
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     align-items: flex-start;
-    position: absolute;
-
 }
 
 .elem {
-    height: 400px;
-    width: 330px;
+    height: 350px;
+    width: 340px;
     background-color: var(--tri1);
-
     border-radius: 20px;
     font-size: 1.8rem;
     position: relative;
@@ -80,6 +133,13 @@ section.allElems {
     cursor: pointer;
 
 }
+
+.elem {
+    flex: 1 1 300px;
+    max-width: 340px;
+    min-width: 250px;
+}
+
 
 .elem img {
     height: 100%;
@@ -378,25 +438,27 @@ textarea::placeholder {
 }
 
 .motivational-planner-fullPage {
-    position: relative;
-
-
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .motivational-planner-fullPage .motivational-container {
-    position: absolute;
-    height: 500px;
-    width: 900px;
-    top: 50%;
-    left: 50%;
-    border-radius: 50px;
-    transform: translate(-50%, -50%);
+ 
+    /* max-width: 700px; */
+    width: 100%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .motivational-planner-fullPage .motivational-container::after {
     content: '';
-    width: 100%;
-    height: 100%;
+    width: 60%;
+     height: 60%;
     position: absolute;
     background: var(--tri1);
     border-radius: 50px;
@@ -406,11 +468,12 @@ textarea::placeholder {
 }
 
 .motivational-planner-fullPage .motivational-container .motvational-wrapper {
-    z-index: 10;
-    position: absolute;
-    background: var(--tri1);
-    width: 100%;
 
+    z-index: 10;
+    
+    position: relative;
+    background: var(--tri1);
+    width: 50%;
     border-radius: 40px;
     padding: 12px
 }
@@ -453,7 +516,7 @@ textarea::placeholder {
 .motivation-3 h1 {
     font-family: aeonikRegularItalic;
     font-size: 30px;
-color: var(--tri2);
+    color: var(--tri2);
     font-weight: 500;
     border-radius: 50px;
     font-weight: 400;
@@ -474,6 +537,7 @@ color: var(--tri2);
 
     position: relative;
 }
+
 .pomodoro-fullPage h1 {
     font-size: 40px;
 }
@@ -483,12 +547,14 @@ color: var(--tri2);
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50% , -50%);
+    transform: translate(-50%, -50%);
     text-align: center;
 }
+
 .pomo-timer h1 {
     font-size: 160px;
 }
+
 .pomo-timer button {
     padding: 10px 20px;
     background: var(--tri2);
@@ -500,7 +566,7 @@ color: var(--tri2);
     transition: all ease-in 0.2s;
 }
 
-.pomo-timer button:active{
+.pomo-timer button:active {
     scale: 0.96;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
 }
@@ -510,8 +576,118 @@ color: var(--tri2);
     left: 50%;
     top: 14%;
     padding: 10px 20px;
-    transform: translate(-50% , 0);
+    transform: translate(-50%, 0);
     background-color: rgb(255, 0, 0);
     border-radius: 10px;
+}
 
+nav {
+    height: 10px;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.nav-in {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--tri2);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.nav-in h2 {
+    font-size: 30px;
+}
+
+.theme {
+
+    background-color: var(--pri);
+    padding: 15px 16px;
+    border-radius: 50%;
+    transition: all ease-in 0.2s;
+
+
+}
+
+.theme i {
+    color: var(--sec);
+}
+
+.theme:active {
+    scale: 0.96;
+}
+
+
+@media (max-width: 1024px) {
+    .header1 h1 {
+        font-size: 50px;
+    }
+
+    .header1 h2 {
+        font-size: 35px;
+    }
+
+    .header1 h4 {
+        font-size: 25px;
+    }
+
+    .elem {
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .allElems {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .elem {
+        width: 80%;
+    }
+
+    .motivational-planner-fullPage .motivational-container {
+        width: 95%;
+    }
+
+    .pomodoro-fullPage .pomo-timer h1 {
+        font-size: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+  .allFeatures  .elem {
+        /* flex: 1 1 300px; */
+        width: 100%;
+    
+        flex-wrap: wrap;
+    }
+
+    header .header1 h1 {
+        font-size: 30px;
+    }
+
+    header .header1 h2 {
+        font-size: 25px;
+    }
+
+    header .header1 h4 {
+        font-size: 18px;
+    }
+
+     .pomo-timer h1 {
+        font-size: 70px;
+    }
+
+    section.allElems .allFeatures {
+
+    display: flex;
+        padding: 0px;
+    justify-content: center;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+}
 }
