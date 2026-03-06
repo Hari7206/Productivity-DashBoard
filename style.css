@@ -65,6 +65,7 @@ body {
     gap: 20px;
     padding: 20px;
     margin-top: 10px;
+    z-index: 10;
     /* position: relative; */
 }
 
@@ -167,15 +168,16 @@ section.allElems .allFeatures {
 .elem:active {
     scale: 0.95;
 }
-
 .fullElem {
     height: 100%;
     width: 100%;
     background-color: var(--sec);
     padding: 20px;
     font-size: 2rem;
-    display: none;
+    display: none !important; /* This forces it to hide regardless of stacking */
     position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .back {

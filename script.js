@@ -40,30 +40,23 @@ function openfetures() {
 
 
 
-    fullElemPageBtn.forEach((back) => {
-        back.addEventListener('click', function () {
-            fullElemPage[back.id].style.display = 'none'
-               nav.style.display = 'flex'
-                allElems.style.display = 'flex'
-
-            //    new changes of back
-       
-        })
+ allElem.forEach((elem) => {
+    elem.addEventListener('click', function () {
+        // Use setProperty to override the !important hide
+        fullElemPage[elem.id].style.setProperty('display', 'block', 'important'); 
+        nav.style.display = 'none';
+        allElems.style.display = 'none';
     })
+})
 
-
-
-
-    allElem.forEach((elem) => {
-        elem.addEventListener('click', function () {
-            fullElemPage[elem.id].style.display = 'block'   
-            nav.style.display = 'none'
-            allElems.style.display = 'none'
-
-            //new change of elems
-            
-        })
+fullElemPageBtn.forEach((back) => {
+    back.addEventListener('click', function () {
+        // Set it back to none
+        fullElemPage[back.id].style.setProperty('display', 'none', 'important');
+        nav.style.display = 'flex';
+        allElems.style.display = 'flex';
     })
+})
 }
 openfetures()
 
