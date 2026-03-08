@@ -1,24 +1,44 @@
 
 
+/* --pri  → very light  
+--tri1 → bright  
+--sec  → dark  
+--tri2 → darker */
+
+
+    let theme = document.querySelector('.theme ')
+    let flag = 0;
 
 function changingTheme(){
     let rootElement = document.documentElement
-let theme = document.querySelector('.theme i')
+    theme.addEventListener('click', function(){
 
-theme.addEventListener('click' , function(){
+        if(flag == 0) {
+            rootElement.style.setProperty('--pri', '#DBCEA5')
+            rootElement.style.setProperty('--sec', '#ECE7D1')
+            rootElement.style.setProperty('--tri1', '#8E977D')
+            rootElement.style.setProperty('--tri2', '#8A7650')
+            flag = 1;
+        }
+        else if(flag == 1){
+             rootElement.style.setProperty('--pri', '#D6F4ED')
+            rootElement.style.setProperty('--sec', '#53629E')
+            rootElement.style.setProperty('--tri1', '#87BAC3')
+            rootElement.style.setProperty('--tri2', '#473472')
+            flag = 2
+        }
+        else if(flag == 2){
+             rootElement.style.setProperty('--pri', '#F8F4E1')
+            rootElement.style.setProperty('--sec', '#7D5A50')
+            rootElement.style.setProperty('--tri1', '#FEBA17')
+            rootElement.style.setProperty('--tri2', '#74512D')
+            flag = 0
+        }
 
-rootElement.style.setProperty('--pri' ,'yellow')
-
-console.log(rootElement);
-})
+    })
 }
+
 changingTheme()
-
-
-
-
-
-
 
 
 
@@ -42,7 +62,7 @@ function openfetures() {
 
  allElem.forEach((elem) => {
     elem.addEventListener('click', function () {
-        // Use setProperty to override the !important hide
+       
         fullElemPage[elem.id].style.setProperty('display', 'block', 'important'); 
         nav.style.display = 'none';
         allElems.style.display = 'none';
@@ -51,7 +71,6 @@ function openfetures() {
 
 fullElemPageBtn.forEach((back) => {
     back.addEventListener('click', function () {
-        // Set it back to none
         fullElemPage[back.id].style.setProperty('display', 'none', 'important');
         nav.style.display = 'flex';
         allElems.style.display = 'flex';
@@ -64,7 +83,7 @@ function todo() {
     let currentTask = []
     // localStorage.clear();
     if (localStorage.getItem('currentTask')) {
-
+ currentTask = JSON.parse(localStorage.getItem('currentTask'))
 
     } else {
         console.log('Task list is Empty');
@@ -363,3 +382,65 @@ if (hours > 12) {
 timeDate();
 }
 weatherFuntion()
+const config = {
+        times: ['Morning', 'Afternoon', 'Evening', 'Night'],
+        days: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+    };
+
+    function setupTracker() {
+        const container = document.getElementById('routine-app');
+        const today = new Date().toDateString();
+        
+        if (localStorage.getItem('last_visit_date') !== today) {
+            localStorage.clear();
+            localStorage.setItem('last_visit_date', today);
+        }
+
+        config.times.forEach(time => {
+            const block = document.createElement('div');
+            block.className = 'section-block';
+            
+            block.innerHTML = `
+                <div class="section-header">
+                    <span class="section-title">${time}</span>
+                    <div class="days-labels">
+                        ${config.days.map(d => `<span>${d}</span>`).join('')}
+                    </div>
+                </div>
+                <div id="${time.toLowerCase()}-rows"></div>
+            `;
+            
+            container.appendChild(block);
+            const rowsContainer = document.getElementById(`${time.toLowerCase()}-rows`);
+            
+            for (let i = 0; i < 4; i++) {
+                const row = document.createElement('div');
+                row.className = 'goal-row';
+                const textKey = `${time}-${i}-text`;
+                const savedText = localStorage.getItem(textKey) || "";
+                
+                row.innerHTML = `
+                    <input type="text" class="goal-input" placeholder="Enter task..." 
+                           value="${savedText}" data-key="${textKey}">
+                    <div class="checkbox-grid">
+                        ${config.days.map((_, dIdx) => {
+                            const cbKey = `${time}-${i}-${dIdx}`;
+                            const isChecked = localStorage.getItem(cbKey) === 'true' ? 'checked' : '';
+                            return `<input type="checkbox" data-key="${cbKey}" ${isChecked}>`;
+                        }).join('')}
+                    </div>
+                `;
+                rowsContainer.appendChild(row);
+            }
+        });
+
+        // Event delegation for saving
+        document.addEventListener('input', (e) => {
+            if (e.target.dataset.key) {
+                const val = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+                localStorage.setItem(e.target.dataset.key, val);
+            }
+        });
+    }
+
+    window.onload = setupTracker;

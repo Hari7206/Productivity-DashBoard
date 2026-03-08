@@ -596,6 +596,7 @@ nav {
     justify-content: space-between;
     background-color: var(--tri2);
     padding: 20px;
+    
     border-radius: 10px;
 }
 
@@ -609,55 +610,22 @@ nav {
     padding: 15px 16px;
     border-radius: 50%;
     transition: all ease-in 0.2s;
+      cursor: pointer;
+       position: relative;
+    z-index: 999;
 
 
 }
 
 .theme i {
+  
     color: var(--sec);
 }
 
-.theme:active {
+.theme i:active {
     scale: 0.96;
 }
 
-
-@media (max-width: 1024px) {
-    .header1 h1 {
-        font-size: 50px;
-    }
-
-    .header1 h2 {
-        font-size: 35px;
-    }
-
-    .header1 h4 {
-        font-size: 25px;
-    }
-
-    .elem {
-        max-width: 45%;
-    }
-}
-
-@media (max-width: 768px) {
-    .allElems {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .elem {
-        width: 80%;
-    }
-
-    .motivational-planner-fullPage .motivational-container {
-        width: 95%;
-    }
-
-    .pomodoro-fullPage .pomo-timer h1 {
-        font-size: 100px;
-    }
-}
 
 @media (max-width: 480px) {
   .allFeatures  .elem {
@@ -693,3 +661,119 @@ nav {
 
 }
 }
+
+.daily-goals-fullPage {
+        background-color: var(--pri);
+        font-family: 'serif';
+        padding: 40px 15px;
+        min-height: 100vh;
+        color: var(--tri2);
+        overflow: auto;
+    }
+
+    .daily-goals-fullPage h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: var(--sec);
+    }
+
+    .tracker-container {
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    .section-block {
+        margin-bottom: 40px;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(125, 90, 80, 0.2);
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+ 
+    .days-labels {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        width: 280px; 
+        text-align: center;
+    }
+
+    .days-labels span {
+        font-size: 0.7rem;
+        font-family: sans-serif;
+        font-weight: bold;
+        color: var(--tri2);
+        display: block; 
+    }
+
+    .goal-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+
+    .goal-input {
+        background: transparent;
+        border: none;
+        font-size: 1rem;
+        color: var(--tri2);
+        flex: 1;
+        margin-right: 20px;
+        outline: none;
+        border-bottom: 1px solid transparent;
+    }
+
+    .goal-input:focus {
+        border-bottom: 1px solid var(--tri1);
+    }
+
+    .checkbox-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        width: 280px;
+    }
+
+    .checkbox-grid input[type="checkbox"] {
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border: 1.5px solid var(--sec);
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .checkbox-grid input[type="checkbox"]:checked {
+        background-color: var(--tri2);
+        position: relative;
+    }
+
+    .checkbox-grid input[type="checkbox"]:checked::after {
+        content: '✓';
+        color: white;
+        font-size: 14px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 600px) {
+        .section-header { flex-direction: column; align-items: flex-start; }
+        .days-labels { width: 100%; margin-top: 10px; }
+        .goal-row { flex-direction: column; align-items: flex-start; }
+        .checkbox-grid { width: 100%; margin-top: 5px; }
+    }
