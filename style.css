@@ -1,19 +1,12 @@
 :root {
-
-/* --pri  → very light  
---tri1 → bright  
---sec  → dark  
---tri2 → darkers */
-
-    --pri: #F8F4E1;
-    --sec: #7D5A50;
-    --tri1: #FEBA17;
-    --tri2: #74512D;
-    --red: red;
-    --green: rgb(19, 179, 99);
-    --blue: rgb(22, 133, 197);
+--pri: #EAE6FF;  
+--tri1: #8B5CF6;
+--tri2: #3B2F63; 
+--sec: #141021;  
+--red: #ff4d4d;
+--green: #13b363;
+--blue: #1685c5;
 }
-
 @font-face {
     font-family: aeonikBold;
     src: url(./AeonikTRIAL-Bold.otf);

@@ -1,43 +1,73 @@
 
 
-/* --pri  → very light  
---tri1 → bright  
---sec  → dark  
---tri2 → darker */
 
 
     let theme = document.querySelector('.theme ')
     let flag = 0;
 
 function changingTheme(){
-    let rootElement = document.documentElement
+
+    let rootElement = document.documentElement;
+
     theme.addEventListener('click', function(){
 
-        if(flag == 0) {
-            rootElement.style.setProperty('--pri', '#DBCEA5')
-            rootElement.style.setProperty('--sec', '#ECE7D1')
-            rootElement.style.setProperty('--tri1', '#8E977D')
-            rootElement.style.setProperty('--tri2', '#8A7650')
+        if(flag == 0){
+
+            
+            rootElement.style.setProperty('--pri', '#F8F4E1')
+            rootElement.style.setProperty('--tri1', '#FEBA17')
+            rootElement.style.setProperty('--tri2', '#9A6F3E')
+            rootElement.style.setProperty('--sec', '#4E342E')
+
             flag = 1;
         }
+
         else if(flag == 1){
-             rootElement.style.setProperty('--pri', '#D6F4ED')
-            rootElement.style.setProperty('--sec', '#53629E')
-            rootElement.style.setProperty('--tri1', '#87BAC3')
-            rootElement.style.setProperty('--tri2', '#473472')
-            flag = 2
+
+            
+            rootElement.style.setProperty('--pri', '#EAEAEA')
+            rootElement.style.setProperty('--tri1', '#6C63FF')
+            rootElement.style.setProperty('--tri2', '#2A2A40')
+            rootElement.style.setProperty('--sec', '#121212')
+
+            flag = 2;
         }
+
         else if(flag == 2){
-             rootElement.style.setProperty('--pri', '#F8F4E1')
-            rootElement.style.setProperty('--sec', '#7D5A50')
-            rootElement.style.setProperty('--tri1', '#FEBA17')
-            rootElement.style.setProperty('--tri2', '#74512D')
-            flag = 0
+
+            
+            rootElement.style.setProperty('--pri', '#E3F6F5')
+            rootElement.style.setProperty('--tri1', '#00ADB5')
+            rootElement.style.setProperty('--tri2', '#3A506B')
+            rootElement.style.setProperty('--sec', '#1B262C')
+
+            flag = 3;
+        }
+
+        else if(flag == 3){
+
+            
+            rootElement.style.setProperty('--pri', '#FFF0F5')
+            rootElement.style.setProperty('--tri1', '#FF9AA2')
+            rootElement.style.setProperty('--tri2', '#C779D0')
+            rootElement.style.setProperty('--sec', '#6A4C93')
+
+            flag = 4;
+        }
+
+        else if(flag == 4){
+
+            //
+            rootElement.style.setProperty('--pri', '#EAFBEA')
+            rootElement.style.setProperty('--tri1', '#7ED957')
+            rootElement.style.setProperty('--tri2', '#3A7D44')
+            rootElement.style.setProperty('--sec', '#1B4332')
+
+            flag = 0;
         }
 
     })
 }
-
 changingTheme()
 
 
