@@ -1,144 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="https://images.ctfassets.net/lbgy40h4xfb7/5q59FjO0MDFTwXip8rPhUY/3482d5aaee185caa095007295783734a/employee-productivity.jpg?w=1200&h=700&fl=progressive&q=90&fm=jpg" type="image/x-icon">
-    <title>Productivity DashBoard</title>
-</head>
-
-<body>
-    <div id="main">
-        <nav>
-       <div class="nav-in">
-             <h2>Productivity DashBoard</h2>
-
-               <div class="theme">
-            <i class="ri-sun-line"></i>
-        </div>
-       </div>
-        </nav>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://i.pinimg.com/736x/69/60/03/696003e0f60df2812913bd14c19e2e79.jpg" type="image/x-icon">
     
+</head>
+<body>
+    <main id="main">
 
+        <!-- TOPBAR -->
+        <nav class="topbar">
+            <h2>Productivity <span>Dashboard</span></h2>
+            <button class="theme" type="button" aria-label="Change colour theme">
+                <i class="ri-sun-line"></i>
+            </button>
+        </nav>
 
-        <section class="allElems">
-            <header>
-                <div class="header1">
-                    <h2>02 March, 2026</h2>
-                    <h1> Tuesday, 9:00 am</h1>
-                    <h4>Hisar(Hr)</h4>
-                </div>
-                <div class="header2">
-                    <h2>20 °C</h2>
+        <!-- DASHBOARD LAYOUT -->
+        <section class="allElems" aria-label="Productivity dashboard">
 
-                    <h4> Sunny</h4>
+            <!-- LEFT COLUMN: INTRO + MOTIVATION -->
+            <div class="left-column">
 
-                    <h3 class="Precipitation"> Precipitation: 0%</h3>
-                    <h3 class="Humidity">Humidity: 38%</h3>
-                    <h3 class="Wind">Wind: 10 km/h</h3>
+                <!-- Intro -->
+                <div class="intro">
+                    <p class="eyebrow">MAKE TODAY COUNT</p>
+                    <h1>Your focus,<br><em>made visible.</em></h1>
+                    <p class="intro-copy">Plan with purpose. Work with clarity. End the day feeling proud.</p>
+                    <div class="date-line">
+                        <span id="today-date"></span>
+                        <span class="dot"></span>
+                        <span id="today-time"></span>
+                    </div>
+                </div>
 
+                <!-- Motivational Quote -->
+                <div class="motivation-panel">
+                    <i class="ri-double-quotes-l quote-mark"></i>
+                    <h2 id="home-quote">Small steps, repeated daily, create remarkable change.</h2>
+                    <p id="home-author">— Productivity reminder</p>
                 </div>
-            </header>
-            <div class="allFeatures">
-                <div class="todo elem" id="0">
-                    <img src="https://i.pinimg.com/1200x/0d/ea/9d/0dea9df02af69204f534fbd675f5b12c.jpg" alt="">
-                    <h2>Todo</h2>
-                </div>
-                <div class="daily elem" id="1">
-                    <img src="https://i.pinimg.com/736x/3a/c3/3a/3ac33a30c33381f282cd5e2489142d42.jpg" alt="">
-                    <h2>Daily planner</h2>
-                </div>
-                <div class="moti elem" id="2">
-                    <img src="https://i.pinimg.com/1200x/d2/17/2b/d2172b3b2fd4398727d433cba54ddb70.jpg" alt="">
-                    <h2>Motivation</h2>
-                </div>
-                <div class="pomo elem" id="3">
-                    <img src="https://i.pinimg.com/736x/cc/76/e2/cc76e2d2c8c2734db2ed4cdee3ac99f7.jpg" alt="">
-                    <h2>Pomodoro Timer</h2>
-                </div>
-                <div class="goals  elem" id="4">
-                    <img src="https://i.pinimg.com/736x/5d/1e/b2/5d1eb2720109bc5f2d6bbdc5d09d6b42.jpg" alt="">
-                    <h2>Daily Goal</h2>
-                </div>
+
             </div>
+
+            <!-- CENTER: GRID TILES -->
+            <div class="dashboard-grid">
+
+                <button class="tile planner elem" id="1" type="button">
+                    <span class="tile-number">01</span>
+                    <i class="ri-calendar-schedule-line tile-icon"></i>
+                    <div>
+                        <span class="tile-kicker">ORGANISE YOUR DAY</span>
+                        <h2>Daily<br>Planner</h2>
+                        <p>Shape your hours around what matters most.</p>
+                    </div>
+                    <span class="tile-action">Open planner <i class="ri-arrow-right-up-line"></i></span>
+                </button>
+
+                <button class="tile todo elem" id="0" type="button">
+                    <span class="tile-number">02</span>
+                    <i class="ri-checkbox-circle-line tile-icon"></i>
+                    <div>
+                        <span class="tile-kicker">GET IT DONE</span>
+                        <h2>To-do List</h2>
+                        <p>One place for every task and priority.</p>
+                    </div>
+              
+                </button>
+
+                <!-- DAILY GOALS - NOW SPANS 2 ROWS TO FILL EMPTY SPACE -->
+                <button class="tile goals elem" id="4" type="button">
+                    <span class="tile-number">03</span>
+                    <i class="ri-flag-2-line tile-icon"></i>
+                    <div>
+                        <span class="tile-kicker">KEEP GROWING</span>
+                        <h2>Daily Goals</h2>
+                        <p>Build routines that stick, one check at a time.</p>
+                    </div>
+                    <span class="goal-progress">
+                        <b>0</b><small>/ 4 done</small>
+                    </span>
+                </button>
+
+                <button class="tile stopwatch elem" id="5" type="button">
+                    <span class="tile-number">04</span>
+                    <i class="ri-timer-line tile-icon"></i>
+                    <div>
+                        <span class="tile-kicker">TRACK YOUR TIME</span>
+                        <h2>Stopwatch</h2>
+                        <p>Measure the time you put into the work.</p>
+                    </div>
+                    <span class="tile-action">Start tracking <i class="ri-play-fill"></i></span>
+                </button>
+
+                <button class="tile pomodoro elem" id="3" type="button">
+                    <span class="tile-number">05</span>
+                    <div class="timer-orb">
+                        <span>25</span>
+                        <small>MIN</small>
+                    </div>
+                    <div>
+                        <span class="tile-kicker">PROTECT YOUR FOCUS</span>
+                        <h2>Pomodoro<br>Timer</h2>
+                        <p>A focused sprint, then a proper pause.</p>
+                    </div>
+                </button>
+
+            </div>
+
+            <!-- RIGHT COLUMN: WEATHER -->
+            <aside class="weather-float" aria-label="Weather information">
+
+                <p class="eyebrow">LOCAL WEATHER</p>
+
+                <div class="weather-main">
+                    <span class="weather-temp">32°</span>
+                    <i class="ri-sun-line"></i>
+                </div>
+
+                <p class="weather-condition">Dust storm</p>
+                <p class="weather-city">Historic Haryana</p>
+
+                <div class="header-search">
+                    <div class="search-container">
+                        <i class="ri-search-line"></i>
+                        <input id="location-search" class="location-input" type="text" placeholder="Search a city">
+                        <button id="search-location-btn" class="search-btn" type="button">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+
+                <div class="weather-details">
+                    <span class="Humidity">Humidity 51%</span>
+                    <span class="Wind">Wind 12.1 km/h</span>
+                    <span class="Precipitation">Rain 0 mm</span>
+                </div>
+
+            </aside>
+
         </section>
 
+        <!-- FULL PAGE OVERLAYS -->
         <section class="fullElem todo-list-fullPage">
-            <button class="back" id="0"><i class="ri-close-large-line"></i></button>
-            <h2>Your Personaliesd task list</h2>
+            <button class="back" id="0"><i class="ri-arrow-left-line"></i> Back to dashboard</button>
+            <h2>Your personalised task list</h2>
             <div class="todo-container">
                 <div class="addTask">
                     <form>
-                        <input type="text" placeholder="Enter Your task" id="text-input">
+                        <input type="text" placeholder="Enter your task" id="text-input">
                         <textarea placeholder="Enter the details"></textarea>
                         <div class="checkbox">
                             <input type="checkbox" id="check">
-                            <label for="check">Mark as important!</label>
+                            <label for="check">Mark as important</label>
                         </div>
-                        <button>Add Task</button>
+                        <button>Add task</button>
                     </form>
                 </div>
-                <div class="allTask">
+                <div class="allTask"></div>
+            </div>
+        </section>
 
+       <section class="fullElem daily-planner-fullPage">
+    <button class="back" id="1"><i class="ri-arrow-left-line"></i> Back to dashboard</button>
+    
+    <div class="planner-header">
+        <div class="planner-title-section">
+            <h2>Daily Planner</h2>
+            <p class="planner-subtitle">Plan your day, hour by hour</p>
+        </div>
+        <div class="planner-date-display">
+            <span class="date-day" id="planner-day">Monday</span>
+            <span class="date-number" id="planner-date">23</span>
+            <span class="date-month" id="planner-month">August</span>
+        </div>
+    </div>
+
+    <div class="planner-main">
+        <!-- Time Progress Circle -->
+        <div class="time-progress-wrapper">
+            <div class="time-circle">
+                <svg viewBox="0 0 120 120" class="progress-ring">
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="var(--line)" stroke-width="6"/>
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="var(--accent)" stroke-width="6" 
+                            class="progress-ring-circle" 
+                            stroke-dasharray="326.73" 
+                            stroke-dashoffset="326.73"
+                            stroke-linecap="round"/>
+                </svg>
+                <div class="time-circle-content">
+                    <span class="current-hour" id="current-hour-display">06</span>
+                    <span class="current-period" id="current-period-display">AM</span>
                 </div>
             </div>
-
-        </section>
-        <section class="fullElem daily-planner-fullPage">
-            <button class="back" id="1"><i class="ri-close-large-line"></i></button>
-            <h2>Plan Your Day to be more Productive</h2>
-
-            <div class="day-planner">
-
-
-
+            <div class="time-label">
+                <span class="day-progress-text">Day Progress</span>
+                <span class="day-progress-percent" id="day-progress">0%</span>
             </div>
-        </section>
+        </div>
+
+        <!-- Time Grid -->
+        <div class="time-grid-container">
+            <div class="time-grid" id="time-grid">
+                <!-- Times will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Daily Note -->
+        <div class="daily-note">
+            <div class="note-header">
+                <i class="ri-sticky-note-line"></i>
+                <span>Daily Note</span>
+            </div>
+            <textarea id="daily-note-input" placeholder="Write a note for today..."></textarea>
+        </div>
+    </div>
+</section>
+
         <section class="fullElem motivational-planner-fullPage">
-            <button class="back" id="2"><i class="ri-close-large-line"></i></button>
+            <button class="back" id="2"><i class="ri-arrow-left-line"></i> Back to dashboard</button>
             <div class="motivational-container">
                 <div class="motvational-wrapper">
-                    <i class="ri-double-quotes-r"></i>
                     <div class="motivation-1">
                         <h1>Quote of the day</h1>
                     </div>
                     <div class="motivation-2">
-                        <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, blanditiis neque soluta ab vel
-                            labore.</h1>
+                        <h1>Small steps, repeated daily, create remarkable change.</h1>
                     </div>
                     <div class="motivation-3">
-                        <h1>Hari Thapa ~</h1>
+                        <h1>Productivity reminder ~</h1>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="fullElem pomodoro-fullPage">
-            <button class="back" id="3"><i class="ri-close-large-line"></i></button>
-            <h1>Study with me !</h1>
-            <h4 class="session">Start Session</h4>
 
-            <div class="pomo-timer">
-                <h1>25:00</h1>
-                <button class="start-timer">Start</button>
-                <button class="pause-timer">Pause</button>
-                <button class="reset-timer">Reset</button>
+     <section class="fullElem pomodoro-fullPage">
+    <button class="back" id="3"><i class="ri-arrow-left-line"></i> Back to dashboard</button>
+    
+    <div class="pomodoro-wrap">
+        <div class="pomodoro-header">
+            <h1>Focus Keeper</h1>
+            <div class="pomodoro-tabs">
+                <button class="tab-btn active" data-tab="timer">Timer Option</button>
+                <button class="tab-btn" data-tab="report">Report</button>
             </div>
-        </section>
-<section class="fullElem daily-goals-fullPage">
-    <button class="back" id="4"><i class="ri-close-large-line"></i></button>
-    <h1>Goals with streak</h1>
-
-    <div class="tracker-container" id="routine-app">
         </div>
+
+        <div class="pomodoro-timer-display">
+            <span class="pomodoro-time" id="pomodoro-time">25:00</span>
+        </div>
+
+        <div class="pomodoro-presets">
+            <button class="preset-btn" data-minutes="100">100 min</button>
+            <button class="preset-btn" data-minutes="5">5 min</button>
+            <button class="preset-btn active" data-minutes="25">25 min</button>
+        </div>
+
+        <div class="pomodoro-modes">
+            <button class="mode-btn active" data-mode="focus">Focus</button>
+            <button class="mode-btn" data-mode="short-break">Short Break</button>
+            <button class="mode-btn" data-mode="long-break">Long Break</button>
+        </div>
+
+        <button class="pomodoro-main-btn" id="pomodoro-main-btn">START</button>
+
+        <div class="pomodoro-session-info">
+            <span class="session-label">Current Session</span>
+            <span class="session-mode" id="session-mode">Focus</span>
+            <span class="session-count" id="session-count">Completed: 0</span>
+        </div>
+    </div>
 </section>
 
+        <section class="fullElem daily-goals-fullPage">
+            <button class="back" id="4"><i class="ri-arrow-left-line"></i> Back to dashboard</button>
+            <h1>Goals with streak</h1>
+            <div class="tracker-container" id="routine-app"></div>
+        </section>
 
-     
+    <section class="fullElem stopwatch-fullPage">
+    <button class="back" id="5"><i class="ri-arrow-left-line"></i> Back to dashboard</button>
+    <div class="stopwatch-wrap">
+        <p class="eyebrow">TIME INVESTED</p>
+        
+        <div class="stopwatch-display-wrapper">
+            <div class="stopwatch-time">
+                <span class="stopwatch-hours" id="stopwatch-hours">00</span>
+                <span class="stopwatch-colon">:</span>
+                <span class="stopwatch-minutes" id="stopwatch-minutes">00</span>
+                <span class="stopwatch-colon">:</span>
+                <span class="stopwatch-seconds" id="stopwatch-seconds">00</span>
+            </div>
+            
+            <div class="stopwatch-labels">
+                <div class="label-item">
+                    <span class="label-value" id="hours-label">00</span>
+                    <span class="label-text">HOURS</span>
+                </div>
+                <div class="label-item">
+                    <span class="label-value" id="minutes-label">00</span>
+                    <span class="label-text">MINUTES</span>
+                </div>
+                <div class="label-item">
+                    <span class="label-value" id="seconds-label">00</span>
+                    <span class="label-text">SECONDS</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stopwatch-controls">
+            <button class="stopwatch-start"><i class="ri-play-fill"></i> Start</button>
+            <button class="stopwatch-pause"><i class="ri-pause-fill"></i> Pause</button>
+            <button class="stopwatch-reset"><i class="ri-refresh-line"></i> Reset</button>
+            <button class="stopwatch-lap"><i class="ri-flag-line"></i> Lap</button>
+        </div>
+
+        <div class="stopwatch-laps">
+            <div class="laps-header">
+                <span>Lap</span>
+                <span>Time</span>
+            </div>
+            <div class="laps-list" id="laps-list">
+                <!-- Laps will be added here -->
+            </div>
+        </div>
     </div>
+</section>
+    </main>
+
     <script src="script.js" defer></script>
 </body>
-
 </html>
