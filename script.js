@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Helper functions for DOM selection
     function getElement(selector) {
         return document.querySelector(selector);
     }
@@ -9,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return document.querySelectorAll(selector);
     }
 
-    // ===== ENSURE MAIN PAGE IS VISIBLE ON LOAD =====
-    // Make sure topbar and allElems are visible, fullElem are hidden
     var topbar = getElement('.topbar');
     var allElems = getElement('.allElems');
     var fullPages = getAllElements('.fullElem');
@@ -22,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         page.style.setProperty('display', 'none', 'important');
     });
 
-    // ===== DATE & TIME =====
     function updateDateTime() {
         var now = new Date();
         
@@ -49,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateDateTime();
     setInterval(updateDateTime, 30000);
 
-    // ===== THEME TOGGLE =====
     var themeButton = getElement('.theme');
     if (themeButton) {
         themeButton.addEventListener('click', function() {
@@ -63,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== TILE NAVIGATION =====
     var tiles = getAllElements('.elem');
     tiles.forEach(function(tile) {
         tile.addEventListener('click', function() {
@@ -74,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (page) {
                 page.style.setProperty('display', 'block', 'important');
                 
-                // Initialize daily planner if it's the planner page (id 1)
                 if (pageIndex === 1) {
                     setTimeout(function() {
                         initDailyPlanner();
@@ -109,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== WEATHER =====
     var apiKey = '167c55de2ebc4ccf84532347260203';
 
     function fetchWeather(query) {
@@ -166,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Get user location or use default
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             function(position) {
@@ -183,7 +174,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchWeather('Delhi');
     }
 
-    // ===== SEARCH =====
     var searchInput = getElement('#location-search');
     var suggestionsBox = getElement('#searchSuggestions');
     var searchButton = getElement('#search-location-btn');
@@ -252,7 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== TO-DO LIST =====
     var tasks = JSON.parse(localStorage.getItem('currentTask') || '[]');
 
     function saveTasks() {
@@ -320,7 +309,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== MOTIVATIONAL QUOTE =====
     var quoteElement = getElement('.motivation-2 h1');
     var authorElement = getElement('.motivation-3 h1');
     var homeQuote = getElement('#home-quote');
@@ -340,10 +328,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (homeAuthor) homeAuthor.textContent = '— ' + quoteAuthor;
         })
         .catch(function() {
-            // Quote failed to load, keep default text
         });
 
-    // ===== ROUTINE TRACKER (Daily Goals) =====
     var routineContainer = getElement('#routine-app');
     var timeSlots = ['Morning', 'Afternoon', 'Evening', 'Night'];
     var weekDays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -382,10 +368,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         routineContainer.innerHTML = routineHtml;
 
-        // Update goal progress on the dashboard tile
         updateGoalProgress();
 
-        // Add event listeners for saving
         routineContainer.addEventListener('input', function(event) {
             var target = event.target;
             if (target.dataset.key) {
@@ -421,14 +405,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize routine
     renderRoutine();
 
-    // ===== POMODORO TIMER =====
-    var pomoSeconds = 1500; // 25 minutes
+    var pomoSeconds = 1500;
     var pomoInterval = null;
     var pomoRunning = false;
-    var pomoMode = 'focus'; // 'focus', 'short-break', 'long-break'
+    var pomoMode = 'focus';
     var pomoCompleted = 0;
     var pomoTotalFocus = 0;
     var pomoIsBreak = false;
@@ -451,11 +433,9 @@ document.addEventListener('DOMContentLoaded', function() {
         pomoMode = mode;
         pomoIsBreak = (mode === 'short-break' || mode === 'long-break');
         
-        // Update mode text
         var modeText = mode === 'focus' ? 'Focus' : mode === 'short-break' ? 'Short Break' : 'Long Break';
         if (pomoSessionMode) pomoSessionMode.textContent = modeText;
         
-        // Set time based on mode
         if (mode === 'focus') {
             pomoSeconds = 25 * 60;
         } else if (mode === 'short-break') {
@@ -464,7 +444,6 @@ document.addEventListener('DOMContentLoaded', function() {
             pomoSeconds = 15 * 60;
         }
         
-        // Update active mode button
         modeBtns.forEach(function(btn) {
             btn.classList.remove('active');
             if (btn.dataset.mode === mode) {
@@ -472,7 +451,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Update preset button based on time
         var minutes = pomoSeconds / 60;
         presetBtns.forEach(function(btn) {
             btn.classList.remove('active');
@@ -481,7 +459,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Reset main button
         if (pomoMainBtn) {
             pomoMainBtn.textContent = 'START';
             pomoMainBtn.classList.remove('running', 'completed');
@@ -495,7 +472,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function startPomodoro() {
         if (pomoRunning) return;
         
-        // If timer is at 0, reset based on mode
         if (pomoSeconds <= 0) {
             setPomodoroMode(pomoMode);
         }
@@ -513,7 +489,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 updatePomodoroDisplay();
                 updatePomodoroTile();
             } else {
-                // Timer completed
                 clearInterval(pomoInterval);
                 pomoRunning = false;
                 
@@ -524,26 +499,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         pomoSessionCount.textContent = 'Completed: ' + pomoCompleted;
                     }
                     
-                    // Show completion
                     if (pomoMainBtn) {
                         pomoMainBtn.textContent = "TIME'S UP! TAKE A BREAK";
                         pomoMainBtn.classList.remove('running');
                         pomoMainBtn.classList.add('completed');
                     }
                     
-                    // Auto switch to break mode but don't auto-start
                     var breakMode = (pomoTotalFocus % 4 === 0) ? 'long-break' : 'short-break';
                     setPomodoroMode(breakMode);
                     
                 } else {
-                    // Break completed
                     if (pomoMainBtn) {
                         pomoMainBtn.textContent = 'BREAK OVER! START FOCUS';
                         pomoMainBtn.classList.remove('running');
                         pomoMainBtn.classList.add('completed');
                     }
                     
-                    // Switch back to focus but don't auto-start
                     setPomodoroMode('focus');
                 }
                 updatePomodoroTile();
@@ -560,13 +531,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Main button click
     if (pomoMainBtn) {
         pomoMainBtn.addEventListener('click', function() {
             if (pomoRunning) {
                 stopPomodoro();
             } else {
-                // If timer is at 0 and it's a break, reset to focus
                 if (pomoSeconds <= 0 && pomoMode !== 'focus') {
                     setPomodoroMode('focus');
                 }
@@ -575,7 +544,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Preset buttons
     presetBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
             if (pomoRunning) return;
@@ -591,7 +559,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Mode buttons
     modeBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
             if (pomoRunning) return;
@@ -600,10 +567,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize
     setPomodoroMode('focus');
 
-    // ===== UPDATE POMODORO PROGRESS IN DASHBOARD =====
     function updatePomodoroTile() {
         var tileOrb = document.querySelector('.pomodoro .timer-orb span');
         if (tileOrb) {
@@ -612,14 +577,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ===== STOPWATCH =====
     var watchSeconds = 0;
     var watchInterval = null;
     var lapCounter = 0;
     var laps = [];
     var lastLapTime = 0;
 
-    // Get all the stopwatch display elements
     var hoursDisplay = getElement('#stopwatch-hours');
     var minutesDisplay = getElement('#stopwatch-minutes');
     var secondsDisplay = getElement('#stopwatch-seconds');
@@ -695,11 +658,9 @@ document.addEventListener('DOMContentLoaded', function() {
         renderLaps();
     }
 
-    // Initialize stopwatch display
     updateStopwatchDisplay();
     renderLaps();
 
-    // Stopwatch controls - using addEventListener
     var stopwatchStart = getElement('.stopwatch-start');
     if (stopwatchStart) {
         stopwatchStart.addEventListener('click', function() {
@@ -740,7 +701,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== DAILY PLANNER (Advanced - Time Grid with Progress Circle) =====
     var schedule = JSON.parse(localStorage.getItem('dayPlanData') || '{}');
 
     function initDailyPlanner() {
@@ -748,7 +708,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDailyNote();
         updateDateDisplay();
 
-        // Update progress every minute
         setInterval(function() {
             var now = new Date();
             updateProgressCircle(now.getHours());
@@ -787,7 +746,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         timeGrid.innerHTML = gridHtml;
 
-        // Save on input
         var inputs = timeGrid.querySelectorAll('input');
         inputs.forEach(function(input) {
             input.addEventListener('input', function() {
@@ -796,7 +754,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Update progress circle
         updateProgressCircle(currentHour);
     }
 
@@ -808,7 +765,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!circle || !percentDisplay) return;
 
-        // Calculate progress from 6 AM to 11 PM (17 hours total)
         var startHour = 6;
         var endHour = 23;
         var totalHours = endHour - startHour;
@@ -817,15 +773,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var progress = ((hoursPassed + (minutes / 60)) / totalHours) * 100;
         var clampedProgress = Math.min(Math.max(progress, 0), 100);
 
-        // Update circle
         var circumference = 326.73;
         var offset = circumference - (clampedProgress / 100) * circumference;
         circle.style.strokeDashoffset = offset;
 
-        // Update percent
         percentDisplay.textContent = Math.round(clampedProgress) + '%';
 
-        // Update time display
         var displayHour = currentHour > 12 ? currentHour - 12 : currentHour;
         if (displayHour === 0) displayHour = 12;
         var period = currentHour >= 12 ? 'PM' : 'AM';

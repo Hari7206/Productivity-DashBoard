@@ -1,111 +1,47 @@
 # Productivity Dashboard
 
-A simple **Productivity Dashboard Web App** that helps users manage daily tasks, stay motivated, and maintain focus while studying or working.
-
-This dashboard combines multiple productivity tools in one place such as a **Todo List, Daily Planner, Motivation Quotes, Pomodoro Timer, and Goal Tracker with Streaks**.
-
----
+A single-page, browser-based dashboard for planning work, managing tasks, tracking focus time, and checking local weather. It has no build step or server-side code: open it in a modern browser to use it.
 
 ## Features
 
-### 1. Todo List
+- **Task list:** Add tasks, mark priorities, and remove completed work. Tasks persist in browser storage.
+- **Daily planner:** Plan every hour from 6 AM to 11 PM, add a daily note, and view the current-day progress indicator.
+- **Daily goals:** Create goals across morning, afternoon, evening, and night. Mark each day of the week as complete; entries persist in browser storage.
+- **Pomodoro timer:** Run focus, short-break, and long-break sessions. Includes 5-, 25-, and 100-minute presets, session counts, and automatic break selection after focus sessions.
+- **Stopwatch:** Start, pause, reset, and record laps. The fastest and slowest laps are highlighted when applicable.
+- **Weather search:** Uses browser geolocation when permitted and lets you search for another city. Displays temperature, conditions, humidity, wind, and precipitation.
+- **Motivation and theme:** Loads a quote of the day and includes a light/dark theme toggle.
 
-* Add new tasks with a title and description
-* Option to **mark tasks as important**
-* View all tasks in one place
-* Helps organize daily work efficiently
+## Run locally
 
-### 2. Daily Planner
+1. Download or clone this repository.
+2. Open [index.html](index.html) in a modern browser.
+3. Allow location access if you want weather for your current location. If you decline it, the dashboard falls back to Delhi.
 
-* Plan your day hour-by-hour
-* Helps structure your routine and increase productivity
+No package installation, build command, or local server is required.
 
-### 3. Motivation Section
+## Project structure
 
-* Displays a **Quote of the Day**
-* Designed to keep users motivated while working or studying
-
-### 4. Pomodoro Timer
-
-* 25 minute focus timer
-* Start, Pause, and Reset controls
-* Useful for deep focus study sessions
-
-### 5. Daily Goals Tracker
-
-* Track daily habits or goals
-* Maintains **streaks** to encourage consistency
-
-### 6. Weather Widget
-
-* Shows:
-
-  * Temperature
-  * Weather condition
-  * Humidity
-  * Wind speed
-  * Precipitation
-
-### 7. Theme Toggle
-
-* Switch between themes using the sun icon in the navbar
-
----
-
-## Tech Stack
-
-* **HTML5** – Structure of the dashboard
-* **CSS3** – Styling and layout
-* **JavaScript (ES6)** – Interactivity and logic
-* **Remix Icons** – UI icons
-
----
-
-## Project Structure
-
-```
-productivity-dashboard
-│
-├── index.html
-├── style.css
-├── script.js
-└── README.md
+```text
+productivity-dashboard/
+├── index.html                 Application markup
+├── style.css                  Layout, themes, and responsive styles
+├── script.js                  Dashboard interactions and persistence
+└── AeonikTRIAL-*.otf          Local display fonts
 ```
 
----
+## Technologies and services
 
-## How to Run the Project
+- HTML, CSS, and vanilla JavaScript
+- [Remix Icon](https://remixicon.com/) icon font, loaded from jsDelivr
+- [WeatherAPI.com](https://www.weatherapi.com/) for current weather and city search
+- [ZenQuotes](https://zenquotes.io/) for the daily quote, accessed through AllOrigins
+- `localStorage` for task, goal, planner, and note data
 
-1. Clone the repository
+## Notes
 
-```bash
-git clone https://github.com/your-username/productivity-dashboard.git
-```
-
-2. Open the project folder
-
-3. Run the project by opening:
-
-```
-index.html
-```
-
-in your browser.
-
----
-
-## Future Improvements
-
-* Save tasks and goals using **Local Storage**
-* Add **real-time weather API**
-* Add **user authentication**
-* Improve UI animations
-* Add **weekly and monthly analytics**
-
----
+The application makes client-side requests to third-party weather and quote services, so those widgets require an internet connection. Data saved through `localStorage` stays only in the current browser profile; clearing site data removes it.
 
 ## Author
 
-**Hari Thapa**
-
-BCA Student | Web Development Learner
+Hari Thapa

@@ -481,7 +481,6 @@ button {
     font-size: 16px;
 }
 
-/* ===== TO-DO LIST STYLES ===== */
 .todo-container {
     display: grid;
     height: 78vh;
@@ -633,7 +632,6 @@ button {
     background: rgba(120, 201, 152, 0.1);
 }
 
-/* ===== MOTIVATIONAL ===== */
 .motivational-planner-fullPage,
 .pomodoro-fullPage,
 .stopwatch-fullPage {
@@ -666,7 +664,6 @@ button {
     line-height: 1.1;
 }
 
-/* ===== POMODORO ===== */
 .pomodoro-fullPage {
     display: flex !important;
     align-items: center;
@@ -686,7 +683,6 @@ button {
     gap: 20px;
 }
 
-/* Header */
 .pomodoro-header {
     display: flex;
     justify-content: space-between;
@@ -730,7 +726,6 @@ button {
     color: var(--ink);
 }
 
-/* Timer Display */
 .pomodoro-timer-display {
     margin: 15px 0 20px;
     padding: 10px 0;
@@ -745,7 +740,6 @@ button {
     line-height: 1;
 }
 
-/* Presets */
 .pomodoro-presets {
     display: flex;
     gap: 16px;
@@ -775,7 +769,6 @@ button {
     border-color: var(--accent);
 }
 
-/* Modes */
 .pomodoro-modes {
     display: flex;
     gap: 10px;
@@ -809,7 +802,6 @@ button {
     color: var(--ink);
 }
 
-/* Main Button */
 .pomodoro-main-btn {
     width: 100%;
     padding: 20px;
@@ -841,7 +833,6 @@ button {
     color: var(--bg);
 }
 
-/* Session Info */
 .pomodoro-session-info {
     display: flex;
     gap: 30px;
@@ -863,7 +854,6 @@ button {
     font-weight: 500;
 }
 
-/* ===== STOPWATCH ===== */
 .stopwatch-fullPage {
     display: flex !important;
     align-items: center;
@@ -1042,7 +1032,6 @@ button {
     background: rgba(165, 162, 156, 0.08) !important;
 }
 
-/* ===== LAPS ===== */
 .stopwatch-laps {
     width: 100%;
     max-width: 400px;
@@ -1133,7 +1122,6 @@ button {
     opacity: 0.5;
 }
 
-/* ===== DAILY GOALS ===== */
 .daily-goals-fullPage .tracker-container {
     margin-top: 24px;
 }
@@ -1185,7 +1173,6 @@ button {
     cursor: pointer;
 }
 
-/* ===== DAILY PLANNER ===== */
 .planner-header {
     display: flex;
     justify-content: space-between;
@@ -1433,7 +1420,6 @@ button {
     box-shadow: 0 0 0 1px var(--accent);
 }
 
-/* ===== LIGHT THEME ===== */
 body.light {
     --bg: #f5f3ef;
     --surface: #e8e5de;
@@ -1498,7 +1484,6 @@ body.light .back:hover {
     background: var(--surface-hover);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     .planner-main {
         grid-template-columns: 1fr;
@@ -1649,7 +1634,6 @@ body.light .back:hover {
         font-size: 24px;
     }
 
-    /* Pomodoro responsive */
     .pomodoro-wrap {
         padding: 20px 15px;
         gap: 12px;
